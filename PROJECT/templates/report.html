@@ -1,0 +1,25 @@
+<!-- templates/report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Product</title>
+</head>
+<body>
+    <h1>Report Product</h1>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label for="target_id">Product ID:</label>
+        <input type="text" name="target_id" required>
+
+        <label for="reason">Reason:</label>
+        <textarea name="reason" required></textarea>
+
+        <button type="submit">Submit Report</button>
+    </form>
+
+    <p><a href="{{ url_for('product_list') }}">Back to product list</a></p>
+</body>
+</html>

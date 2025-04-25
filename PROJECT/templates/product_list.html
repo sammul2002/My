@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>상품 목록</title></head>
+<body>
+    <h1>상품 목록</h1>
+    <a href="{{ url_for('new_product') }}">상품 등록</a>
+    <a href="{{ url_for('logout') }}">로그아웃</a>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product['title'] }}</strong><br>
+                {{ product['description'] }}<br>
+                가격: {{ product['price'] }}
+            </li>
+        {% endfor %}
+    </ul>
+
+<h2>상품 목록</h2>
+
+<form action="{{ url_for('search') }}" method="get">
+    <input type="text" name="query" placeholder="상품 검색" value="{{ query if query else '' }}">
+    <button type="submit">검색</button>
+</form>
+
+<ul>
+    {% for product in products %}
+        <li>{{ product.title }} - {{ product.price }}원</li>
+    {% else %}
+        <li>상품이 없습니다.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

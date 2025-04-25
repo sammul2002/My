@@ -1,0 +1,32 @@
+<!-- templates/products.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>상품 목록</title>
+</head>
+<body>
+    <h1>상품 목록</h1>
+    <form method="get" action="{{ url_for('products') }}">
+        <input type="text" name="search" value="{{ search_query }}" placeholder="상품명으로 검색" />
+        <button type="submit">검색</button>
+    </form>
+    
+    <h2>검색 결과: "{{ search_query }}"</h2>
+    <ul>
+        {% if products %}
+            {% for product in products %}
+                <li>
+                    <h3>{{ product['title'] }}</h3>
+                    <p>{{ product['description'] }}</p>
+                    <p>가격: {{ product['price'] }}원</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>검색된 상품이 없습니다.</li>
+        {% endif %}
+    </ul>
+    
+    <a href="{{ url_for('index') }}">홈으로</a>
+</body>
+</html>

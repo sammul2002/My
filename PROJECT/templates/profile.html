@@ -1,0 +1,22 @@
+<!-- templates/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Profile</h1>
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <label for="bio">Bio:</label>
+        <textarea name="bio" required>{{ user['bio'] }}</textarea>
+
+        <button type="submit">Update Bio</button>
+    </form>
+
+    <p><a href="{{ url_for('product_list') }}">Back to product list</a></p>
+</body>
+</html>

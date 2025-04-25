@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+</head>
+<body>
+    <h1>상품 검색</h1>
+    <form method="POST" action="{{ url_for('search') }}">
+        <input type="text" name="search_term" placeholder="검색어를 입력하세요" required>
+        <button type="submit">검색</button>
+    </form>
+
+    <h3>검색 결과:</h3>
+    <ul>
+        {% for product in products %}
+            <li>{{ product['title'] }} - {{ product['price'] }}</li>
+        {% else %}
+            <li>검색된 상품이 없습니다.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
